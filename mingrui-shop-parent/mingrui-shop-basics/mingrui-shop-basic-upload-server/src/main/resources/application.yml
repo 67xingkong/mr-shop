@@ -1,0 +1,17 @@
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image: # 缩略图
+    width: 60
+    height: 60
+  tracker-list: # tracker地址
+    - 192.144.253.51:22122
+
+mingrui:
+  upload:
+    path:
+      windows: E:\\images
+      linux: /zhangxiangxing/images
+    img:
+      #图片服务器主机
+      host: http://192.144.253.51/

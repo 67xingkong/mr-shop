@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mingrui-shop-commoms</artifactId>
+        <artifactId>mingrui-shop-commons</artifactId>
         <groupId>com.baidu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mingrui-shop-commom-core</artifactId>
+    <artifactId>mingrui-shop-common-core</artifactId>
 
     <properties>
         <google.gson.version>2.8.5</google.gson.version>
@@ -19,12 +19,14 @@
     </properties>
 
     <dependencies>
+
         <!--处理json与各种数据类型或文档类型的转换-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${google.gson.version}</version>
         </dependency>
+
         <!--json对象序列化和反序列化的支持-->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -36,6 +38,7 @@
             <artifactId>jackson-mapper-lgpl</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+
         <!--java对象和json对象之间的转换-->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -47,6 +50,7 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+
         <!--alibaba的json处理工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -57,6 +61,20 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
+        </dependency>
+
+        <!--全局异常处理时,添加的-->
+        <!-- SpringBoot-整合Web组件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--首字母自动识别时,使用-->
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>2.5.1</version>
         </dependency>
     </dependencies>
 
