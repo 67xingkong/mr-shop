@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "品牌接口")
 public interface BrandService {
 
-    @ApiOperation(value = "获取品牌信息")
+    @ApiOperation(value = "查询品牌信息")
     @GetMapping(value = "brand/getBrandInfo")
     public Result<PageInfo<BrandEntity>> getBrandInfo(BrandDTO brandDTO);
 

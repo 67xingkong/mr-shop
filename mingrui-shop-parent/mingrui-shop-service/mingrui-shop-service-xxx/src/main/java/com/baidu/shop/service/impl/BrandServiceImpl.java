@@ -9,6 +9,7 @@ import com.baidu.shop.mapper.BrandMapper;
 import com.baidu.shop.mapper.CategoryBrandMapper;
 import com.baidu.shop.service.BrandService;
 import com.baidu.shop.utils.BaiduBeanUtil;
+import com.baidu.shop.utils.ObjectUtil;
 import com.baidu.shop.utils.PinyinUtil;
 import com.baidu.shop.utils.StringUtil;
 import com.github.pagehelper.PageHelper;
@@ -40,22 +41,19 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     @Resource
     private CategoryBrandMapper categoryBrandMapper;
 
+    //查询品牌信息
     @Override
     public Result<PageInfo<BrandEntity>> getBrandInfo(BrandDTO brandDTO) {
 
         //分页-->(当前页,每页显示的条数)
+        if(ObjectUtil.isNotNull(brandDTO.getPage()) && ObjectUtil.isNotNull(brandDTO.getRows()))
         PageHelper.startPage(brandDTO.getPage(),brandDTO.getRows());
 
-        //????????????????????????????????????????????????????????????????????????????
         //排序--条件查询
         Example example = new Example(BrandEntity.class);
         //判断排序字段 是否 不为空
         if (StringUtil.isNotEmpty(brandDTO.getSort()))
             example.setOrderByClause(brandDTO.getOrderByClause());
-
-        //Example.Criteria criteria = example.createCriteria();
-        //条件查询
-        //if (StringUtil.isNotEmpty(brandDTO.getName())) criteria.andLike("name","%" + brandDTO.getName() + "%");
 
         if (StringUtil.isNotEmpty(brandDTO.getName())) example.createCriteria()
             .andLike("name","%" + brandDTO.getName() + "%");
@@ -70,6 +68,7 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
         return this.setResultSuccess(pageInfo);
     }
 
+    //新增品牌信息
     @Transactional
     @Override
     public Result<JsonObject> saveBrand(BrandDTO brandDTO){
@@ -151,6 +150,7 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
         return this.setResultSuccess();
     }
 
+    //修改品牌信息
     @Transactional
     @Override
     public Result<JsonObject> editBrand(BrandDTO brandDTO) {
@@ -176,6 +176,7 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
         return this.setResultSuccess();
     }
 
+    //通过id删除品牌信息
     @Transactional
     @Override
     public Result<JsonObject> deleteBrand(Integer id) {
@@ -188,6 +189,7 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
         return this.setResultSuccess();
     }
 
+    //----------------------封装------------------------------
     private void deleteCategoryAndBrand(Integer id){
 
         Example example = new Example(CategoryBrandEntity.class);

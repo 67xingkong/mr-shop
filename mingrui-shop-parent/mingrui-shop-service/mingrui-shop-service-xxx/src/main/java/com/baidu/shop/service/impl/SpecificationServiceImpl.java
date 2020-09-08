@@ -36,7 +36,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
     @Resource
     private SpecParamMapper specParamMapper;
 
-    //规格组
+    //通过条件查询规格组
     @Override
     public Result<List<SpecGroupEntity>> getSpecGroupInfo(SpecGroupDTO specGroupDTO) {
 
@@ -49,7 +49,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess(list);
     }
 
-    //规格组
+    //新增规格组
     @Transactional
     @Override
     public Result<JSONObject> save(SpecGroupDTO specGroupDTO) {
@@ -59,7 +59,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess();
     }
 
-    //规格组
+    //修改规格组
     @Transactional
     @Override
     public Result<JSONObject> edit(SpecGroupDTO specGroupDTO) {
@@ -69,7 +69,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess();
     }
 
-    //规格组
+    //删除规格组
     @Transactional
     @Override
     public Result<JSONObject> delete(Integer id) {
@@ -98,7 +98,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess();
     }
 
-    //规格参数
+    //查询规格参数
     @Transactional
     @Override
     public Result<SpecGroupEntity> getSpecParamInfo(SpecParamDTO specParamDTO) {
@@ -119,7 +119,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess(list);
     }
 
-    //规格参数
+    //新增规格参数
     @Transactional
     @Override
     public Result<JSONObject> addParam(SpecParamDTO specParamDTO) {
@@ -129,7 +129,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess();
     }
 
-    //规格参数
+    //修改规格参数
     @Transactional
     @Override
     public Result<JSONObject> editParam(SpecParamDTO specParamDTO) {
@@ -139,7 +139,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         return this.setResultSuccess();
     }
 
-    //规格参数
+    //删除规格参数
     @Transactional
     @Override
     public Result<JSONObject> delParam(Integer id) {
