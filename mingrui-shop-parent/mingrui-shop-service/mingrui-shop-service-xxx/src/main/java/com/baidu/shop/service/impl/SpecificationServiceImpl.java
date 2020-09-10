@@ -43,7 +43,8 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         //通过分类id查询数据
         Example example = new Example(SpecGroupEntity.class);
 
-        if(ObjectUtil.isNotNull(specGroupDTO.getCid())) example.createCriteria().andEqualTo("cid",specGroupDTO.getCid());
+        if(ObjectUtil.isNotNull(specGroupDTO.getCid()))
+            example.createCriteria().andEqualTo("cid",specGroupDTO.getCid());
 
         List<SpecGroupEntity> list = specGroupMapper.selectByExample(example);
         return this.setResultSuccess(list);
@@ -53,9 +54,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
     @Transactional
     @Override
     public Result<JSONObject> save(SpecGroupDTO specGroupDTO) {
-
         specGroupMapper.insertSelective(BaiduBeanUtil.copyProperties(specGroupDTO,SpecGroupEntity.class));
-
         return this.setResultSuccess();
     }
 
@@ -63,9 +62,7 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
     @Transactional
     @Override
     public Result<JSONObject> edit(SpecGroupDTO specGroupDTO) {
-
         specGroupMapper.updateByPrimaryKeySelective(BaiduBeanUtil.copyProperties(specGroupDTO,SpecGroupEntity.class));
-
         return this.setResultSuccess();
     }
 
@@ -101,20 +98,20 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
     //查询规格参数
     @Transactional
     @Override
-    public Result<SpecGroupEntity> getSpecParamInfo(SpecParamDTO specParamDTO) {
+    public Result<SpecParamEntity> getSpecParamInfo(SpecParamDTO specParamDTO) {
 
-        List<SpecParamEntity> list = null;
-        if(ObjectUtil.isNotNull(specParamDTO)){
+        Example example = new Example(SpecParamEntity.class);
+        Example.Criteria criteria = example.createCriteria();
 
-            Example example = new Example(SpecParamEntity.class);
-            Example.Criteria criteria = example.createCriteria();
-
-            if(ObjectUtil.isNotNull(specParamDTO.getGroupId())){
-                criteria.andEqualTo("groupId",specParamDTO.getGroupId());
-            }
-
-            list = specParamMapper.selectByExample(example);
+        if(ObjectUtil.isNotNull(specParamDTO.getGroupId())){
+            criteria.andEqualTo("groupId",specParamDTO.getGroupId());
         }
+
+        if(ObjectUtil.isNotNull(specParamDTO.getCid())){
+            criteria.andEqualTo("cid",specParamDTO.getCid());
+        }
+
+        List<SpecParamEntity> list = specParamMapper.selectByExample(example);
 
         return this.setResultSuccess(list);
     }

@@ -1,5 +1,6 @@
 package com.baidu.shop.entity;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 import javax.persistence.GeneratedValue;
@@ -9,39 +10,36 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * @ClassName SpuEntity
+ * @ClassName SkuEntity
  * @Description: TODO
  * @Author zhangxiangxing
- * @Date 2020/9/7
+ * @Date 2020/9/8
  * @Version V1.0
  **/
-@Table(name = "tb_spu")
+@Table(name = "tb_sku")
 @Data
-public class SpuEntity {
+public class SkuEntity {
 
-    @Id
+    @Id//此处必须写long类型,因为现在新增的id已经超过了int的范围
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+
+    private Integer spuId;
 
     private String title;
 
-    private String subTitle;
+    private String images;
 
-    private Integer cid1;
+    private Integer price;
 
-    private Integer cid2;
+    private String indexes;
 
-    private Integer cid3;
+    private String ownSpec;
 
-    private Integer brandId;
-
-    private Integer saleable;
-
-    private Integer valid;
+    private Integer enable;
 
     private Date createTime;
 
     private Date lastUpdateTime;
-
 
 }
